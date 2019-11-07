@@ -18,6 +18,7 @@ public class Unit {
     @ManyToOne
     private Faction faction;
     private String name;
+    private String battlefieldRole;
     private Integer minModelCount;
     private Integer maxModelCount;
     @ManyToMany
