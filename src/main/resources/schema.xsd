@@ -1,0 +1,439 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.battlescribe.net/schema/catalogueSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           jxb:version="2.1">
+  <xs:element name="publication">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="characteristicType">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="characteristicTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:characteristicType" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profileType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:characteristicTypes" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryEntry">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+          <xs:attribute type="xs:string" name="hidden" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryLink">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+          <xs:attribute type="xs:string" name="hidden" use="optional"/>
+          <xs:attribute type="xs:string" name="targetId" use="optional"/>
+          <xs:attribute type="xs:string" name="primary" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:categoryLink" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entryLink">
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="cat:categoryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:entryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:modifiers" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:constraints" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+      <xs:attribute type="xs:string" name="collective" use="optional"/>
+      <xs:attribute type="xs:string" name="import" use="optional"/>
+      <xs:attribute type="xs:string" name="targetId" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="page" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entryLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:entryLink" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="infoLink">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="cat:modifiers" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+      <xs:attribute type="xs:string" name="targetId" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cost">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+          <xs:attribute type="xs:string" name="typeId" use="optional"/>
+          <xs:attribute type="xs:float" name="value" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="infoLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:infoLink" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="costs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:cost" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modifier">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="cat:conditions" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:repeats" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:conditionGroups" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="field" use="optional"/>
+      <xs:attribute type="xs:string" name="value" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="constraint">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="field" use="optional"/>
+          <xs:attribute type="xs:string" name="scope" use="optional"/>
+          <xs:attribute type="xs:float" name="value" use="optional"/>
+          <xs:attribute type="xs:string" name="percentValue" use="optional"/>
+          <xs:attribute type="xs:string" name="shared" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildSelections" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildForces" use="optional"/>
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+          <xs:attribute type="xs:string" name="type" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modifiers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:modifier" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="constraints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:constraint" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="condition">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="field" use="optional"/>
+          <xs:attribute type="xs:string" name="scope" use="optional"/>
+          <xs:attribute type="xs:float" name="value" use="optional"/>
+          <xs:attribute type="xs:string" name="percentValue" use="optional"/>
+          <xs:attribute type="xs:string" name="shared" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildSelections" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildForces" use="optional"/>
+          <xs:attribute type="xs:string" name="childId" use="optional"/>
+          <xs:attribute type="xs:string" name="type" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conditions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:condition" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="characteristic">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+          <xs:attribute type="xs:string" name="typeId" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="characteristics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:characteristic" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:modifiers" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:characteristics" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+      <xs:attribute type="xs:string" name="typeId" use="optional"/>
+      <xs:attribute type="xs:string" name="typeName" use="optional"/>
+      <xs:attribute type="xs:string" name="publicationId" use="optional"/>
+      <xs:attribute type="xs:string" name="page" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:profile" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selectionEntry">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="cat:modifiers" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:constraints" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:infoLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:selectionEntryGroups" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:entryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:profiles" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:selectionEntries" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:costs" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:categoryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+      <xs:attribute type="xs:string" name="collective" use="optional"/>
+      <xs:attribute type="xs:string" name="import" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="publicationId" use="optional"/>
+      <xs:attribute type="xs:byte" name="page" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selectionEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:selectionEntry" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selectionEntryGroup">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="cat:modifiers" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:constraints" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:entryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:selectionEntries" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:selectionEntryGroups" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+      <xs:attribute type="xs:string" name="collective" use="optional"/>
+      <xs:attribute type="xs:string" name="import" use="optional"/>
+      <xs:attribute type="xs:string" name="defaultSelectionEntryId" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selectionEntryGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:selectionEntryGroup" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="repeat">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="field" use="optional"/>
+          <xs:attribute type="xs:string" name="scope" use="optional"/>
+          <xs:attribute type="xs:float" name="value" use="optional"/>
+          <xs:attribute type="xs:string" name="percentValue" use="optional"/>
+          <xs:attribute type="xs:string" name="shared" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildSelections" use="optional"/>
+          <xs:attribute type="xs:string" name="includeChildForces" use="optional"/>
+          <xs:attribute type="xs:string" name="childId" use="optional"/>
+          <xs:attribute type="xs:byte" name="repeats" use="optional"/>
+          <xs:attribute type="xs:string" name="roundUp" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="repeats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:repeat" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conditionGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:conditions" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:conditionGroups" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conditionGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:conditionGroup" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="rule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:description" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="hidden" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="catalogueLink">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="id"/>
+          <xs:attribute type="xs:string" name="name"/>
+          <xs:attribute type="xs:string" name="targetId"/>
+          <xs:attribute type="xs:string" name="type"/>
+          <xs:attribute type="xs:string" name="importRootEntries"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="publications">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:publication" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profileTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:profileType" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:categoryEntry" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sharedSelectionEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:selectionEntry" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sharedSelectionEntryGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:selectionEntryGroup" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sharedRules">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:rule" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sharedProfiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:profile" maxOccurs="unbounded" minOccurs="0" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="catalogueLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:catalogueLink" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="catalogue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cat:publications" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:profileTypes" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:categoryEntries" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:entryLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:infoLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:sharedSelectionEntries" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:sharedSelectionEntryGroups" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:sharedRules" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:sharedProfiles" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+        <xs:element ref="cat:catalogueLinks" xmlns:cat="http://www.battlescribe.net/schema/catalogueSchema"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id"/>
+      <xs:attribute type="xs:string" name="name"/>
+      <xs:attribute type="xs:byte" name="revision"/>
+      <xs:attribute type="xs:float" name="battleScribeVersion"/>
+      <xs:attribute type="xs:string" name="authorName"/>
+      <xs:attribute type="xs:string" name="authorContact"/>
+      <xs:attribute type="xs:string" name="authorUrl"/>
+      <xs:attribute type="xs:string" name="library"/>
+      <xs:attribute type="xs:string" name="gameSystemId"/>
+      <xs:attribute type="xs:byte" name="gameSystemRevision"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
