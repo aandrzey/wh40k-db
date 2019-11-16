@@ -5,16 +5,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import pl.aandrzey.wh40kdb.loader.impl.WeaponCSVLoader;
+import pl.aandrzey.wh40kdb.loader.impl.TauXMLLoader;
 
 @SpringBootApplication
 public class Wh40kDbApplication {
 
-    private WeaponCSVLoader weaponCSVLoader;
+    private TauXMLLoader tauXMLLoader;
 
     @Autowired
-    public Wh40kDbApplication(WeaponCSVLoader weaponCSVLoader) {
-        this.weaponCSVLoader = weaponCSVLoader;
+    public Wh40kDbApplication(TauXMLLoader tauXMLLoader) {
+        this.tauXMLLoader = tauXMLLoader;
     }
 
     public static void main(String[] args) {
@@ -24,9 +24,7 @@ public class Wh40kDbApplication {
     @Bean
     CommandLineRunner init() { //funkcja ktora uruchamia sie podczas startu aplikacji (za kazdym razem)
         return (args) -> {
-
-            weaponCSVLoader.loadData();
-
+            tauXMLLoader.loadData();
         };
     }
 

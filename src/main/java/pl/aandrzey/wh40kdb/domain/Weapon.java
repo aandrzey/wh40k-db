@@ -3,6 +3,8 @@ package pl.aandrzey.wh40kdb.domain;
 import com.fasterxml.jackson.databind.JsonSerializable;
 import lombok.Getter;
 import lombok.Setter;
+import pl.aandrzey.wh40kdb.xml.Characteristic;
+import pl.aandrzey.wh40kdb.xml.Profile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -20,14 +22,14 @@ public class Weapon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(max = 30, message = "name of weapon is too long")
+    @Size(max = 100, message = "name of weapon is too long")
     @NotEmpty
     private String name;
 
     @Column(name = "max_range")
 
-    @Min(value = 0)
-    private Integer range;
+    @Size (max = 10, message = "range of weapon is too long")
+    private String range;
 
     @Size(max = 20, message = "type of weapon is too long")
     private String type;
@@ -41,7 +43,7 @@ public class Weapon {
     @Size(max = 10, message = "damage of weapon is too long")
     private String damage;
 
-    @Size(max = 100, message = "ability of weapon is too long")
+    @Size(max = 255, message = "ability of weapon is too long")
     private String ability;
 
     @Size(max = 100, message = "reference of weapon is too long")
@@ -49,4 +51,18 @@ public class Weapon {
 
     @ManyToMany(mappedBy = "weapons")
     private List<Unit> units = new ArrayList<>();
+
+    public static Weapon createWeaponFromProfile(Profile profile){
+        List<Characteristic> characteristicsList = profile.getCharacteristics().getCharacteristic();
+        Weapon weapon = new Weapon();
+        weapon.name = profile.getName();
+        weapon.range = characteristicsList.get(0).getValue();
+        weapon.type = characteristicsList.get(1).getValue();
+        weapon.strength = characteristicsList.get(2).getValue();
+        weapon.armourPenetration = characteristicsList.get(3).getValue();
+        weapon.damage = characteristicsList.get(4).getValue();
+        weapon.ability = characteristicsList.get(5).getValue();
+
+        return weapon;
+    }
 }
