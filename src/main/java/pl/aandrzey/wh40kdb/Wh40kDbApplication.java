@@ -24,7 +24,7 @@ public class Wh40kDbApplication {
     @Bean
     CommandLineRunner init() { //funkcja ktora uruchamia sie podczas startu aplikacji (za kazdym razem)
         return (args) -> {
-            tauXMLLoader.loadData();
+            //tauXMLLoader.loadData();
         };
     }
 
