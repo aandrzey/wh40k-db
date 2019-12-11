@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum DataSourceXML {
-    AELDARI_CRAFTWORLDS("https://github.com/BSData/wh40k/blob/master/Aeldari%20-%20Craftworlds.cat", "Aeldari - Craftworlds.cat"),
-    AELDARI_DRUKHARI("https://github.com/BSData/wh40k/blob/master/Aeldari%20-%20Drukhari.cat", "Aeldari - Drukhari.cat"),
-    AELDARI_FW_CORSAIRS("https://github.com/BSData/wh40k/blob/master/Aeldari%20-%20FW%20Corsairs.cat", "Aeldari - FW Corsairs.cat"),
+    AELDARI_CRAFTWORLDS("https://raw.githubusercontent.com/BSData/wh40k/master/Aeldari%20-%20Craftworlds.cat", "Aeldari - Craftworlds.cat"),
+    AELDARI_DRUKHARI("https://raw.githubusercontent.com/BSData/wh40k/master/Aeldari%20-%20Drukhari.cat", "Aeldari - Drukhari.cat"),
+    AELDARI_FW_CORSAIRS("https://raw.githubusercontent.com/BSData/wh40k/master/Aeldari%20-%20FW%20Corsairs.cat", "Aeldari - FW Corsairs.cat"),
     AELDARI_HARLEQUINS("https://raw.githubusercontent.com/BSData/wh40k/master/Aeldari%20-%20Harlequins.cat", "Aeldari - Harlequins.cat"),
     AELDARI_YNNARI("https://raw.githubusercontent.com/BSData/wh40k/master/Aeldari%20-%20Ynnari.cat", "Aeldari - Ynnari.cat"),
     CHAOS_CSM("https://raw.githubusercontent.com/BSData/wh40k/master/Chaos%20-%20Chaos%20Space%20Marines.cat", "Chaos - Chaos Space Marines.cat"),
@@ -45,7 +45,7 @@ public enum DataSourceXML {
     IMPERIUM_SPACE_WOLVES("https://raw.githubusercontent.com/BSData/wh40k/master/Imperium%20-%20Space%20Wolves.cat", "Imperium - Space Wolves.cat"),
     NECRONS("https://raw.githubusercontent.com/BSData/wh40k/master/Necrons.cat", "Necrons.cat"),
     ORKS("https://raw.githubusercontent.com/BSData/wh40k/master/Orks.cat", "Orks.cat"),
-    TAU_EMPIRE("https://github.com/BSData/wh40k/blob/master/T'au%20Empire.cat", "T'au Empire.cat"),
+    TAU_EMPIRE("https://raw.githubusercontent.com/BSData/wh40k/master/T'au%20Empire.cat", "T'au Empire.cat"),
     TYRANIDS_GENESTEALER_CULTS("https://raw.githubusercontent.com/BSData/wh40k/master/Tyranids%20-%20Genestealer%20Cults.cat", "Tyranids - Genestealer Cults.cat"),
     TYRANIDS("https://raw.githubusercontent.com/BSData/wh40k/master/Tyranids.cat", "Tyranids.cat");
 

@@ -29,7 +29,7 @@ public class TauXMLLoader implements XMLLoader {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Catalogue.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Catalogue catalogue = (Catalogue) jaxbUnmarshaller.unmarshal(new File("C:\\Users\\Andrzej\\IdeaProjects\\wh40k-db\\data\\T'au Empire.cat"));
+            Catalogue catalogue = (Catalogue) jaxbUnmarshaller.unmarshal(new File("data/T'au Empire.cat"));
 
             System.out.println(catalogue.getAuthorName());
 
